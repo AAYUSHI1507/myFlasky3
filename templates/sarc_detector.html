@@ -1,14 +1,14 @@
 {% extends 'layout.html' %} {% block content %}
 <main>
   <h2>This is sarcasm Detectior page</h2>
-  <form method="POST" action="{{ url_for('predict') }}">
+  <form method="POST" action="{{ url_for('prediction') }}">
     <div class="form-group">
       <label for="text">Enter your text:</label>
       <textarea class="form-control" id="text" name="text" rows="3"></textarea>
     </div>
     <button type="submit" class="btn btn-primary">Detect Sarcasm</button>
   </form>
-  {% if prediction %}
+  <!-- {% if prediction %}
   <div class="alert alert-{{ 'success' if prediction == 1 else 'danger' }}" role="alert">
     {% if prediction == 1 %}
     This text is sarcastic!
@@ -16,7 +16,25 @@
     This text is not sarcastic.
     {% endif %}
   </div>
-  {% endif %}
+  {% endif %} -->
+    <div class="jumbotron hero text-center">
+      <h1>Here is Your Result...</h1>
+    </div>
+    <br />
+
+    <div class="jumbotron">
+      {% if response == 0 %}
+
+      <div class="typewriter">
+        <div class="typewriter-text">It's not Sarcastic.</div>
+      </div>
+      {% endif %} {% if response == 1 %}
+
+      <div class="typewriter">
+        <div class="typewriter-text">It's Sarcastic.</div>
+      </div>
+      {% endif %}
+    </div>
   </div>
 </main>
 

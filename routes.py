@@ -14,16 +14,16 @@ def dashboard():
 def sarc_detector():
     return render_template('sarc_detector.html')
 
-@app.route('/predict',methods=["GET", "POST"])
-def predict():
+@app.route('/result',methods=["GET", "POST"])
+def prediction():
     if request.method == "POST":    
         form_data = request.form
-        status = predict(form_data["text"])
-        return render_template("result.html",result=status, response=status)
+        status = sarc_detect2.predict(form_data["text"]) 
+        return render_template("sarc_detector.html",result=status, response=status)
     else:
-        return render_template("result.html")
+        return render_template("sarc_detector.html")
 
 
-@app.route('/result')
-def result():
-    return render_template('result.html')
+# @app.route('/result')
+# def result():
+#     return render_template('result.html')
