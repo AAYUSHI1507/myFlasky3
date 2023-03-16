@@ -19,7 +19,7 @@ def prediction():
     if request.method == "POST":    
         form_data = request.form
         status = sarc_detect2.predict(form_data["text"]) 
-        return render_template("sarc_detector.html",result=status, response=status)
+        return render_template("result.html",result=status, response=status)
     else:
         return render_template("sarc_detector.html")
 
