@@ -24,7 +24,13 @@ body {
     margin-top: 10px;
     text-align: center;
   }
-  
+  .nav-item{
+    padding-right:30px;
+  }
+
+  .nav-brand{
+    margin-left: 10px;
+  }
   /* Features section */
 #features {
     background-color: #f2f2f2;
@@ -40,6 +46,8 @@ body {
 
   /* banner feature */
   #banner {
+    background-image: url('https://news.machinelearning.sg/posts/learn_to_train_a_state_of_the_art_model_for_sarcasm_detection/sarcasm_detection.png');
+    flex-wrap: wrap;
     background-color: #f7f7f7;
     padding: 100px 0;
   }
