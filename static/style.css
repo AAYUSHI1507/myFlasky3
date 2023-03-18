@@ -161,6 +161,8 @@ body {
     color: #fff;
     padding: 30px;
     text-align: center;
+    position: sticky;
+    bottom: 0%;
   }
   
   footer p {
@@ -216,21 +218,28 @@ h2 {
 /* Style for the form group */
 .form-group {
   margin-bottom: 2rem;
+  margin-top: 20px;
+  margin-left: 30px;
+  margin-right: 50vh;
+  justify-content: center;
 }
 
 /* Style for the label */
 label {
   font-size: 1.2rem;
   font-weight: bold;
+  margin-bottom: 10px;
 }
 
 /* Style for the text area */
 textarea {
   font-size: 1rem;
   padding: 0.5rem;
-  width: 100%;
+  width: 100vh !important;
+  height: 250px;
   border-radius: 0.5rem;
   border: 1px solid gray;
+  resize: none;
 }
 
 /* Style for the button */
@@ -241,6 +250,8 @@ textarea {
   border-radius: 0.5rem;
   background-color: #007bff;
   border: none;
+  margin-left: 30px;
+  margin-bottom: 20px;
 }
 
 /* Style for the jumbotron */

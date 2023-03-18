@@ -1,7 +1,7 @@
 {% extends 'layout.html' %} {% block content %}
 <main>
   <h2>This is sarcasm Detectior page</h2>
-  <form method="POST" action="{{ url_for('prediction') }}">
+  <form method="POST" action="{{ url_for('prediction') }}" style="justify-content: center;">
     <div class="form-group">
       <label for="text">Enter your text:</label>
       <textarea class="form-control" id="text" name="text" rows="3"></textarea>
