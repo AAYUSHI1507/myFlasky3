@@ -161,8 +161,9 @@ body {
     color: #fff;
     padding: 30px;
     text-align: center;
-    position: sticky;
+    position: absolute;
     bottom: 0%;
+    width: 100%;
   }
   
   footer p {
@@ -239,6 +240,10 @@ textarea {
   height: 250px;
   border-radius: 0.5rem;
   border: 1px solid gray;
+  resize: none;
+  background-color: rgb(160, 127, 127);
+}
+.txtarea1{
   resize: none;
 }
 
