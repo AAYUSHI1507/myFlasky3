@@ -1,25 +1,46 @@
 {% extends 'layout.html' %} {% block content %}
 <main>
   <h2>This is dashboard page</h2>
-  <select class="custom-select" id="mySelect">
-    <option selected>Open this select menu</option>
-    <option value="1">Huffing Post</option>
-    <option value="2">Times of India</option>
-    <option value="3">BBC News</option>
-    <option value="4">Entertainment news</option>
-  </select>
-  <button onclick="sendSelectValue()">Select</button>
+  <form action="/my-endpoint" method="post">
+    <select class="custom-select" id="mySelect" name = "selected_value">
+      <option selected>Open this select menu</option>
+      <option value="Huffingpost">Huffing Post</option>
+      <option value="Times of India">Times of India</option>
+      <option value="BBC News">BBC News</option>
+      <option value="Entertainment news">Entertainment news</option>
+    </select>
+    <input type="submit" value="Submit">
+  </form>
+<br>
+  <!-- The data of the selected value -->
+  <div class="jumbotron" id="data_dislpay">
+    <p>function is executed {{ response1 }}</p>
+    {% if response1 == "Huffingpost" %}
+  
+    <div class="typewriter">
+      <div class="typewriter-text">The Selected value is  {{ response1 }}</div>
+    </div>
+    {% endif %}
+    <div class="jumbotron">
+      {% if response1 == "BBC News" %}
+  
+      <div class="typewriter">
+        <div class="typewriter-text">The Selected value is  {{ response1 }}</div>
+      </div>
+      {% endif %}
+    </div>
+    {% if response1 == "Times of India" %}
+  
+    <div class="typewriter">
+      <div class="typewriter-text">The Selected value is  {{ response1 }}</div>
+    </div>
+    {% endif %}
+    {% if response1 == "Entertainment news" %}
+  
+    <div class="typewriter">
+      <div class="typewriter-text">The Selected value is  {{ response1 }}</div>
+    </div>
+    {% endif %}
+  </div>
 </main>
-<script>
-  function sendSelectValue() {
-    var selectElement = document.getElementById("mySelect");
-    var selectedValue =
-      selectElement.options[selectElement.selectedIndex].value;
-
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "/my-endpoint");
-    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhr.send(JSON.stringify({ selectedValue: selectedValue }));
-  }
-</script>
 {% endblock %}

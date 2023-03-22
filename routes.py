@@ -11,12 +11,15 @@ def index():
 def dashboard():
     return render_template('dashboard.html')
 
-@app.route('/my-endpoint', methods=["GET", "POST"])
+@app.route('/my-endpoint', methods=["GET","POST"])
 def my_endpoint():
-    selected_value = request.json['selectedValue']
-    # do something with selected_value
-    print("selected value is ",selected_value)
-    return 'OK'
+    if request.method == 'POST':
+        selected_value = request.form['selected_value']
+        s1 = selected_value
+        # do something with selected_value
+        print("selected value is ",selected_value)
+        return render_template('dashboard.html', response1 = s1)
+    return render_template('dashboard.html')
 
 #Included in sarc detector
 @app.route('/sarc_detector')
