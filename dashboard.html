@@ -1,0 +1,108 @@
+{% extends 'layout.html' %} {% block content %}
+<main>
+  <form action="/my-endpoint" method="post">
+    <select class="custom-select" id="mySelect" name="selected_value">
+      <option selected>Open this select menu</option>
+      <option value="Huffingpost">Huffing Post</option>
+      <option value="Times of India">Times of India</option>
+      <option value="BBC News">BBC News</option>
+      <option value="Entertainment news">Entertainment news</option>
+    </select>
+    <input type="submit" value="Submit" />
+  </form>
+  <br />
+  <!-- The data of the selected value -->
+  <p>function is executed {{ response1 }}</p>
+  <div class="jumbotron" id="data-display">
+    <table class="my-table">
+      {{ data1|safe }}
+    </table>
+  </div>
+
+  {% if response1 %}
+  <h3 style="margin: 0 20px">
+    Histogram of the Sarcastic vs. Non-Sarcastic news headline counts according
+    to website
+  </h3>
+  <div
+    class="col-xs-10 col-sm-6 col-md-6 w-75 p-3 mx-auto"
+    style="width: 28rem"
+  >
+    <div class="card-body">
+      <div class="chart-container" style="position: relative">
+        <canvas id="sarcastic_vs_nonsarcastic"></canvas>
+      </div>
+    </div>
+  </div>
+  <div
+    class="col-xs-10 col-sm-6 col-md-6 w-75 p-3 mx-auto"
+    style="width: 28rem"
+  >
+    <div class="card-body">
+      <div class="chart-container" style="position: relative; -ms-flex-align: center;">
+        <h3>Sarcastic and non sarcastic word length</h3>
+        {% include "graphchart.html" %}
+      </div>
+    </div>
+  </div>
+<br>
+  <div class="card-body">
+    <div class="chart-container" style="position: relative">
+      <h3>Sarcastic and Non-Sarcastic Headline Word Clouds</h3>
+      <h4>Sarcastic Headlines</h4>
+      <img src="{{ url_for('static', filename='images/sarcastic_wordcloud.png') }}" alt="Sarcastic Headline Word Cloud" height="300px" width="500px">
+    </div>
+  </div>
+  <br>
+  <div class="card-body">
+    <div class="chart-container" style="position: relative">
+      <h4>Non-Sarcastic Headlines</h4>
+      <img src="{{ url_for('static', filename='images/non_sarcastic_wordcloud.png') }}" alt="Non-Sarcastic Headline Word Cloud" height="300px" width="500px">
+    </div>
+  </div>
+  <br>
+</div>
+
+  {% else %}
+  <h4>Select the news paper headlines want to detect</h4>
+
+  <!-- Mychart canvas
+<h1>My chart canvas</h1>
+<canvas id="myChart"></canvas> -->
+
+  {% endif %}
+</main>
+{% block javascript %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  let sar_count1 = {{sarc1}}
+  let sar_count0 = {{sarc0}}
+  const ctx = document.getElementById("sarcastic_vs_nonsarcastic");
+  new Chart(ctx, {
+
+      type: "bar",
+      data: {
+          labels: ["sarcastic", "non-sarcastic"],
+          datasets: [
+              {
+                  label: "No of News headlines in {{response1}}",
+                  data: [sar_count1, sar_count0],
+                  borderWidth: 1,
+                  backgroundColor:[
+                    'rgb(105, 158, 223)',
+                    'rgb(255, 255, 94)'
+                  ],
+              },
+              ],
+          },
+          options: {
+              scales: {
+                  y: {
+                      beginAtZero: true,
+                  },
+              },
+          },
+      });
+</script>
+
+{% endblock javascript %} {% endblock %}

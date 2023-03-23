@@ -1,0 +1,24 @@
+{% extends 'layout.html' %} {% block content %}
+<main>
+  <div class="jumbotron hero text-center">
+    <h1>Here is Your Result...</h1>
+  </div>
+  <br />
+
+  <div class="jumbotron">
+    {% if response == 0 %}
+
+    <div class="typewriter">
+      <div class="typewriter-text">It's not Sarcastic.</div>
+    </div>
+    {% endif %} {% if response == 1 %}
+
+    <div class="typewriter">
+      <div class="typewriter-text">It's Sarcastic.</div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+</main>
+
+{% endblock %}

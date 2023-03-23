@@ -1,0 +1,38 @@
+<!-- Mychart canvas -->
+<h1>My chart canvas</h1>
+<p>this is {{ sar0 }}</p>
+<canvas id="myChart"></canvas>
+
+{% block javascript %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  let sar_count1 = {{sar0}}
+  let sar_count0 = {{sar1}}
+  const ctx1 = document.getElementById("myChart");
+  new Chart(ctx1, {
+
+      type: "bar",
+      data: {
+          datasets: [
+              {
+                  label: "No of News headlines in {{response1}}",
+                  data: [sar_count1, sar_count0],
+                  borderWidth: 1,
+                  backgroundColor:[
+                    'rgb(105, 158, 223)',
+                    'rgb(255, 255, 94)'
+                  ],
+              },
+              ],
+          },
+          options: {
+              scales: {
+                  y: {
+                      beginAtZero: true,
+                  },
+              },
+          },
+      });
+</script>
+
+{% endblock javascript %}

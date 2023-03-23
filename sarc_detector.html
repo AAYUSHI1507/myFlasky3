@@ -1,0 +1,21 @@
+{% extends 'layout.html' %} {% block content %}
+<main>
+  <form method="POST" action="{{ url_for('prediction') }}" style="justify-content: center;" class="txtarea1">
+    <div class="form-group">
+      <label for="text">Enter your text:</label>
+      <textarea class="form-control" id="text" name="text" rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Detect Sarcasm</button>
+  </form>
+  <!-- {% if prediction %}
+  <div class="alert alert-{{ 'success' if prediction == 1 else 'danger' }}" role="alert">
+    {% if prediction == 1 %}
+    This text is sarcastic!
+    {% else %}
+    This text is not sarcastic.
+    {% endif %}
+  </div>
+  {% endif %} -->
+</main>
+
+{% endblock %}
